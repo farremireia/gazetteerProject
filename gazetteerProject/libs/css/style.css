@@ -1,0 +1,336 @@
+@import url("https://fonts.googleapis.com/css2?family=Turret+Road&display=swap");
+
+@media (min-width: 768px) {
+
+  nav, header {
+    height: 10vh !important;
+    width: 100% !important;
+  }
+
+  #title {
+    font-size: 2em !important;
+  }
+
+  #dropdownCountry {
+    font-size: inherit !important;
+  }
+
+  #map {
+    top: 10% !important;
+    right: 0 !important;
+    height: 89% !important;
+    width: 100% !important;
+  }
+  
+  #info {
+    line-height: 20px;
+  }
+
+  #info .country, #weatherLocation .country {
+    font-size: 1.5em !important;
+  }
+
+  .infoResult {
+    font-size: 1em !important;
+  }
+
+  #info > div > h3 {
+    font-size: 0.8em !important;
+  }
+
+  .weatherColumn {
+    height: 50% !important;
+    border-bottom: 3px solid #778899 !important;
+    border-top: 3px solid #778899 !important;
+    padding: 2px !important;
+  }
+
+
+}
+
+@media (min-width: 992px) {
+
+  #map {
+    width: 100% !important;
+  }
+
+}
+
+html, header, body {
+  font-family: 'Turret Road' !important;
+}
+
+body {
+  height: 85vh;
+}
+
+nav, header {
+  height: 9vh;
+  position: fixed;
+  z-index: 2;
+  background-color: #D3D3D3;
+  color: #778899;
+}
+
+#title {
+  font-size: 2em;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 0;
+}
+
+#dropdownCountry {
+  border: 2px solid #DCDCDC;
+  background-color: #778899;
+  color: #DCDCDC;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.7em;
+  text-align-last: center;
+}
+
+#map {
+  position: fixed;
+  z-index: 0;
+  background-color: #D3D3D3;
+  top: 8vh;
+  height: 100%;
+  width: 100%;
+}
+
+#footer {
+  position: fixed;
+  width: 100%;
+  height: 40%;
+  bottom: calc(50px - 40%);
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+h2 {
+  font-size: 1em !important;
+}
+
+#button1 {
+  background-color: #778899;
+  color: #D3D3D3;
+  font-weight: bold;
+  border: 1px solid #D3D3D3;
+  margin: 0;
+  cursor: pointer;
+}
+
+#button1:hover {
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#button2 {
+  background-color: #778899;
+  color: #D3D3D3;
+  font-weight: bold;
+  border: 1px solid #D3D3D3;
+  margin: 0;
+  cursor: pointer;
+}
+
+#button2:hover {
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#btn1 {
+  background-color: #778899;
+  color: #D3D3D3;
+  font-weight: bold;
+  border: 1px solid #D3D3D3;
+  height: 50px;
+  margin: 0;
+  cursor: pointer;
+}
+
+#btn1:hover {
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#info {
+  display: none;
+  background-color: white;
+  color: #778899;
+}
+
+#info > div {
+  height: 15%;
+  width: 100%;
+  margin: 0;
+}
+
+#weather > div {
+  height: 15%;
+  width: 100%;
+  margin: 0;
+}
+
+#info > div > .countryName {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+
+#weather > div > .countryName2 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+#info > div > h3, .infoResult {
+  font-size: 0.8em;
+}
+
+.country {
+  font-size: 0.8em;
+  font-weight: 900;
+  text-align: center;
+}
+
+#flag {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  padding: 5px;
+}
+
+#flag2 {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  padding: 5;
+}
+
+#weather {
+  display: none;
+  background-color: white;
+  color: #778899;
+}
+
+#weather > div > h3, .weatherResult {
+  font-size: 0.8em;
+}
+
+#weatherLocation {
+  width: 100%;
+}
+
+#weatherTable {
+  width: 100%;
+  text-align: center;
+}
+
+
+.weatherColumn {
+  height: 50%;
+  border-bottom: 3px solid #778899;
+  border-top: 3px solid #778899;
+  padding: 2px;
+}
+
+.weatherColumn div {
+  height: 10%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 0.8em;
+}
+
+.weatherColumn div:first-child {
+  font-size: 1.5em;
+}
+
+.weatherIcon {
+  height: 55%;
+}
+
+.weatherIcon img {
+  height: 100%;
+}
+
+.sidebar {
+  height: 55%;
+  width: 0px; 
+  position: fixed; 
+  z-index: 10000; 
+  top: 0;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden; 
+  padding-top: 0px; 
+  transition: 0.5s; 
+}
+
+.sidebar a {
+  text-align: center;
+  text-decoration: none;
+  color: #8c8d8d;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: gray;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  cursor: pointer;
+  background-color: transparent;
+  color: #778899;
+  border: none;
+}
+
+.long {
+  font-size: 20px;
+  padding: 10px 15px;
+}
+
+.openbtn:hover {
+  color:white;
+}
+
+#wiki {
+  position: fixed;
+  display: inline-block;
+  z-index: 10001;
+  top: 0px;
+  right: 3px;
+  transition: margin-right .5s;
+  padding: 5px;
+}
+
+#mySidebar > ul > li > a {
+  background-color: #778899;
+  color: #D3D3D3;
+  border: 1px solid #D3D3D3;
+  margin: 0;
+}
+

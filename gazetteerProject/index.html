@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+        <title>Gazetteer</title>
+
+        <link rel="stylesheet" href="libs/css/style.css">
+
+        <link rel="stylesheet" href="libs/css/jquery-ui.css">
+        <link rel="stylesheet" href="libs/css/bootstrap/bootstrap.min.css">
+
+        <link rel="stylesheet" href="libs/css/leaflet.css">
+        <link rel="stylesheet" href="libs/leaflet.markercluster/dist/MarkerCluster.css">
+        <link rel="stylesheet" href="libs/leaflet.markercluster/dist/MarkerCluster.Default.css">
+            
+    </head>
+
+    <body>
+
+        <nav class="navbar">
+
+            <div class="col-12 col-md-12 d-flex justify-content-left">
+                <h1 id="title">GAZETTEER</h1>
+            </div>
+            
+            <div class="col-12 col-md-12 pr-0 d-flex justify-content-center">
+                <select name="dropdown" id="dropdownCountry"></select>
+            </div>
+
+            <div class="justify-content-right" id="wiki">
+                <button class="openbtn long">&#9776; Country Info</button>
+            </div>
+    
+        </nav>
+    
+        <div id="map"></div>
+
+        <div id="mySidebar" class="sidebar">
+
+            <a href="javascript:void(0)" class="closebtn">&times;</a>
+
+            <ul class="nav nav-tabs">
+
+                <li class="nav-item">
+                    <a class="nav-link active tabLinks" id="button1" data-toggle="tab"><h2>Basic Information</h2></a>                    
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active tabLinks" id="button2" data-toggle="tab"><h2>Weather Forecast</h2></a> 
+                </li>  
+
+            </ul>
+
+            <br>
+            <br>
+
+            <div class="tab-content">
+            
+                <section id="info" class="tabContent" style="display: block;">
+
+                    <div class="col d-flex justify-content-center align-items-center">  
+                        <img alt class="col-3 d-flex justify-content-center align-items-center flag" id="flag"></img>
+                        <h3 class="col-6 d-flex justify-content-center align-items-center countryName" id="countryName"></h3>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <h3 class="col d-flex justify-content-end m-0">CONTINENT:</h3>
+                        <span class="col d-flex justify-content-start infoResult" id="continent"></span>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <h3 class="col d-flex justify-content-end m-0">CAPITAL CITY:</h3>
+                        <span class="col d-flex justify-content-start infoResult" id="capital"></span>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <h3 class="col d-flex justify-content-end m-0" style="text-align: right;">POPULATION:</h3>
+                        <span class="col d-flex justify-content-start infoResult" id="population"></span>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <h3 class="col d-flex justify-content-end m-0" style="text-align: right;">AREA:</h3>
+                        <span class="col d-flex justify-content-start infoResult"><span id="area"></span><span>km<sup>2</sup></span></span>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <h3 class="col d-flex justify-content-end m-0" style="text-align: right;">LANGUAGES:</h3>
+                        <span class="col d-flex justify-content-start infoResult"><span id="languages"></span>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <h3 class="col d-flex justify-content-end m-0">CURRENCY:</h3>
+                        <span class="col d-flex justify-content-start infoResult"><span id="currencyCode"></span> <span id="currencySymbol"></span></span> 
+                    </div>
+
+                    <div class="row align-items-center">
+                        <h3 class="col d-flex justify-content-end m-0">NEIGHBOURS:</h3>
+                        <span class="col d-flex justify-content-start infoResult"><span id="neighbours"></span></span> 
+                    </div>
+
+                </section>
+    
+                <section id="weather" class="tabContent">
+    
+                    <div class="row m-0" id="weatherTable">
+    
+                        <div class="weatherColumn col-6 col-md-6" id="day1">
+                            
+                            <div>
+                                <h3>TODAY</h3>
+                            </div>
+                                    
+                            <br>
+                                    
+                            <div class="col info-img no-padding">
+                                <img alt id="todayW">
+                                <p id="todayDescription"></p>
+                            </div>
+                                    
+                            <br>
+                                    
+                            <div class="row-centered my-auto">
+                                <p id="todayMinTemp"></p>
+                            </div>
+                                    
+                            <div class="row-centered my-auto">
+                                <p id="todayMaxTemp"></p>
+                            </div>
+                                    
+                            <div class="row-centered my-auto">
+                                <p id="todayHum"></p>
+                            </div>
+            
+                        </div>
+                                
+                        <div class="weatherColumn col-6 col-md-6" id="day2">
+                                    
+                            <div>
+                                <h3>TOMORROW</h3>
+                            </div>
+                        
+                            <br>
+                                    
+                            <div class="col info-img no-padding">
+                                <img alt id="tomorrowW">
+                                <p id="tomorrowDescription"></p>
+                            </div>
+                            
+                            <br>
+                            
+                            <div class="row-centered my-auto">
+                                <p id="tomorrowMinTemp"></p>
+                            </div>
+            
+                            <div class="row-centered my-auto">
+                                <p id="tomorrowMaxTemp"></p>
+                            </div>
+                            
+                            <div class="row-centered my-auto">
+                                <p id="tomorrowHum"></p>
+                            </div>
+
+                        </div>
+                                
+                        <div class="weatherColumn col-6 col-md-6" id="day3">
+                                    
+                            <div>
+                                <h3 id="date3"></h3>
+                            </div>
+            
+                            <br>
+                                    
+                            <div class="col info-img no-padding">
+                                <img alt id="tomorrowW3">
+                                <p id="tomorrowDescription3"></p>
+                            </div>
+    
+                            <br>
+    
+                            <div class="row-centered my-auto">
+                                <p id="tomorrowMinTemp3"></p>
+                            </div>
+                        
+                            <div class="row-centered my-auto">
+                                <p id="tomorrowMaxTemp3"></p>
+                            </div>
+                        
+                            <div class="row-centered my-auto">
+                                <p id="tomorrowHum3"></p>
+                            </div>
+        
+                        </div>
+
+                        <div class="weatherColumn col-6 col-md-6" id="day4">
+                                    
+                            <div>
+                                <h3 id="date4"></h3>
+                            </div>
+            
+                            <br>
+                                    
+                            <div class="col info-img no-padding">
+                                <img alt id="tomorrowW4">
+                                <p id="tomorrowDescription4"></p>
+                            </div>
+                                    
+                            <br>
+                            
+                            <div class="row-centered my-auto">
+                                <p id="tomorrowMinTemp4"></p>
+                            </div>
+            
+                            <div class="row-centered my-auto">
+                                <p id="tomorrowMaxTemp4"></p>
+                            </div>
+                            
+                            <div class="row-centered my-auto">
+                                <p id="tomorrowHum4"></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    
+                </section>
+         
+            </div>
+
+        </div>
+
+        <div class="col-12 col-lg-12 p-0" id="footer">
+
+            <div id="buttons" class="row m-0">
+                <input id="btn1" class="button col-12 tabLinks" type="Button"  value="UNESCO World Heritage">
+            </div>
+
+            <div class="tab-pane fade show active" id="unesco">
+                
+                <div class="row-centered my-auto">
+                    
+                    <div id="results1"></div>
+                    
+                    <div id="searchUnesco">
+                        
+                        <fieldset>
+                        
+                            <legend>Find UNESCO WHS by Category</legend>
+                        
+                            <form class="log" method="get" action="">
+
+                                <label for="category">Choose a Category from the list:</label>
+                    
+                                <br>
+                    
+                                <select id="category" name="category">
+                                    <option value="Cultural">Cultural</option>
+                                    <option value="Natural">Natural</option>
+                                    <option value="Mixed">Mixed</option>
+                                </select>
+                    
+                            </form>
+
+                        </fieldset>
+                        
+                    </div>
+                               
+                </div>
+
+            </div>
+
+        </div>
+    
+        <script src="libs/js/jquery.min.js"></script>
+        <script src="libs/js/jquery-ui.min.js"></script>
+        <script src="libs/js/bootstrap/bootstrap.min.js"></script>
+
+        <script src="libs/js/leaflet-src.js"></script>
+        <script src="libs/leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
+
+        <script src="libs/js/script.js"></script>
+
+    </body>
+
+</html>
