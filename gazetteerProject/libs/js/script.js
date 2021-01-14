@@ -121,7 +121,6 @@ $(document).ready(function () {
         },    
 
         success: function (result) {  
-            console.log(result);
             
             map.on('locationfound', onLocationFound);
             map.on('locationerror', onLocationError);
@@ -172,7 +171,6 @@ $('#dropdownCountry').on('change', function() {
             },
 
             success: function(result, weatherData, item, data){
-                console.log(result, weatherData, item, data);
 
                 if(result.status.code == 200){
  
@@ -380,7 +378,6 @@ function getUnesco() {
         },
 
         success: function (result, results, data) {  
-            console.log(result, results);
 
             if(result.status.code == 200){
 
@@ -432,7 +429,6 @@ function onLocationError() {
 }
 
 function onLocationFound(e) {
-    console.log(e);
 
     $.ajax({
 
@@ -447,7 +443,6 @@ function onLocationFound(e) {
         },
 
         success: function(result){
-            console.log(result);
 
             $('#dropdownCountry').val(result.data.countryCode).change();
 
