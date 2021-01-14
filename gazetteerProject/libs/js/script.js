@@ -407,6 +407,10 @@ function getUnesco() {
     
             }    
 
+        },
+
+        error: function(jqXHR, textStatus, errorThrown){
+            alert(`${textStatus} error`);
         }
 
     });
